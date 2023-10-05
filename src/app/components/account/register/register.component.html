@@ -7,6 +7,16 @@
                     <h2>Criar conta de usuário</h2>
                     <p>Preencha os campos para criar sua conta.</p>
                 </div>
+
+                <div *ngIf="mensagemSucesso" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Sucesso!</strong> {{ mensagemSucesso }}
+                    <button type="button" class="btn-close" (click)="mensagemSucesso = ''" aria-label="Close"></button>
+                </div>
+                <div *ngIf="mensagemErro" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Erro!</strong> {{ mensagemErro }}
+                    <button type="button" class="btn-close" (click)="mensagemErro = ''" aria-label="Close"></button>
+                </div>
+
                 <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
                     <div class="mb-2">
                         <label>Nome do usuário:</label>
@@ -46,7 +56,8 @@
                                 Por favor, informe a sua senha de acesso.
                             </span>
                             <span *ngIf="form.senha.errors.pattern">
-                                Por favor, informe a senha com letras maiúsculas, letras minúsculas, números, símbolos e no mínimo 8 caracteres.
+                                Por favor, informe a senha com letras maiúsculas, letras minúsculas, números, símbolos e
+                                no mínimo 8 caracteres.
                             </span>
                         </span>
                     </div>
@@ -54,7 +65,8 @@
                         <label>Confirme sua senha:</label>
                         <input type="password" class="form-control" formControlName="senhaConfirmacao"
                             placeholder="Confirme sua senha aqui." />
-                        <span class="text-danger" *ngIf="form.senhaConfirmacao.touched && form.senhaConfirmacao.invalid">
+                        <span class="text-danger"
+                            *ngIf="form.senhaConfirmacao.touched && form.senhaConfirmacao.invalid">
                             <span *ngIf="form.senhaConfirmacao.errors.required">
                                 Por favor, confirme sua senha.
                             </span>

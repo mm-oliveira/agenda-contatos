@@ -5,7 +5,6 @@ import { CriarContaRequestModel } from 'src/app/models/usuarios/criarconta-reque
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { MatchPasswordValidator } from 'src/app/validators/match-password.validator';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -64,7 +63,6 @@ export class RegisterComponent {
       email: this.formRegister.value.email as string,
       senha: this.formRegister.value.senha as string,
     };
-
 
     this.usuariosService.criarConta(model)
       .subscribe({
